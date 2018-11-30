@@ -20,7 +20,7 @@ app.post('/webhook', (req, res) => {
     }
 });
 
-// Messenger platform verifies webook via this get endpoints
+// Messenger platform verifies webook via this get endpoint
 app.get('/webhook', (req, res) => {
     let verifyToken = "nikhil";
 
