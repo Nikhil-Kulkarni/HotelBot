@@ -43,6 +43,7 @@ const sendMessage = (recipientId, messagePayloads) => {
         .map((payload) => messageToJson(recipientId, payload));
 
     api.callMessagesApi([
+        markSeen(recipientId),
         typingOn(recipientId),
         ...messagePayloadArray]);
 };
