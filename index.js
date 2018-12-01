@@ -2,19 +2,23 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const receiveApi = require('./receive');
 const app = express().use(bodyParser.json());
 
 // Messenger platform sends all webhook events to this post endpoint
 app.post('/webhook', (req, res) => {
-    let body = req.body;
-    
+    res.sendStatus(200);
+
+    const body = req.body;
     if (body.object === 'page') {
         body.entry.forEach(entry => {
-            let webhookEvent = entry.messaging[0];
-            console.log(webhookEvent);
+            entry.messaging.forEach(messagingEvent => {
+                if (messagingEvent.message) {
+                    console.log(messagingEvent);
+                    receiveApi.handleReceivedMessage(messagingEvent);
+                }
+            });
         });
-
-        res.status(200).send('EVENT_RECEIVED');
     } else {
         res.sendStatus(404)
     }
