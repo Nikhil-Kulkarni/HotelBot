@@ -13,9 +13,9 @@ app.post('/webhook', (req, res) => {
     if (body.object === 'page') {
         body.entry.forEach(entry => {
             entry.messaging.forEach(messagingEvent => {
+                console.log(messagingEvent);
                 if (messagingEvent.message) {
                     receiveApi.handleReceivedMessage(messagingEvent);
-                    console.log(messagingEvent.nlp);
                 }
             });
         });
