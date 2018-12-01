@@ -1,6 +1,6 @@
 const messages = require('./messages');
 const api = require('./api');
-const lodash = require('lodash');
+const _ = require('lodash');
 
 const messageToJson = (recipientId, messagePayload) => {
     return {
@@ -12,7 +12,7 @@ const messageToJson = (recipientId, messagePayload) => {
 };
 
 const sendMessage = (recipientId, messagePayloads) => {
-    const messagePayloadArray = lodash.castArray(messagePayloads)
+    const messagePayloadArray = _.castArray(messagePayloads)
         .map((payload) => messageToJson(recipientId, payload));
 
     api.callMessagesApi(messagePayloadArray);
