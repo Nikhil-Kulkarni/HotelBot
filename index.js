@@ -12,9 +12,9 @@ app.post('/webhook', (req, res) => {
     const body = req.body;
     if (body.object === 'page') {
         body.entry.forEach(entry => {
+            console.log(entry);
             entry.messaging.forEach(messagingEvent => {
                 if (messagingEvent.message) {
-                    console.log(messagingEvent);
                     receiveApi.handleReceivedMessage(messagingEvent);
                 }
             });
