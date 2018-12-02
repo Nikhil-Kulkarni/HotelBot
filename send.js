@@ -51,7 +51,7 @@ const sendMessage = (recipientId, messagePayloads) => {
 const sendDummyMessage = (recipientId) => {
     sendMessage(
         recipientId,
-        [messages.dummyMessage, messages.dummyMessage]);
+        [messages.dummyMessage, messages.dummyMessage, messages.dummyMessage, messages.dummyMessage, messages.dummyMessage, messages.dummyMessage]);
 };
 
 module.exports = {
