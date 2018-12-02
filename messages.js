@@ -3,8 +3,10 @@ const dummyMessage = {
 };
 
 const messageWithText = (messageText) => {
-    text: messageText
-}
+    return {
+        text: messageText
+    };
+};
 
 module.exports = {
     dummyMessage,
