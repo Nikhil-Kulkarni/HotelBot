@@ -4,7 +4,7 @@ const handleReceivedMessage = (messagingEvent) => {
     const message = messagingEvent.message;
     const senderId = messagingEvent.sender.id;
 
-    sendApi.sendDummyMessage(senderId);
+    sendApi.sendMessageFromText(senderId, message);
 };
 
 module.exports = {

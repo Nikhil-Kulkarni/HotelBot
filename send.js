@@ -84,5 +84,6 @@ const sendDummyMessage = (recipientId) => {
 
 module.exports = {
     sendMessage,
-    sendDummyMessage
+    sendDummyMessage,
+    sendMessageFromText
 };
