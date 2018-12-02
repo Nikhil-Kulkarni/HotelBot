@@ -53,26 +53,26 @@ const sendMessageFromText = (recipientId, message) => {
     if (text.includes("hi") || text.includes("hey") || text.includes("yo") || text.includes("What's up")) {
         sendMessage(
             recipientId,
-            ["Hi, I'm Chef Nikhil. I look up recipes for food you want, gather the ingredients, and deliver them right to your doorstep. Tell me what you want to eat and I'll figure the rest out.",
-            "Try asking me for some tacos"]);
+            [messages.messageWithText("Hi, I'm Chef Nikhil. I look up recipes for food you want, gather the ingredients, and deliver them right to your doorstep. Tell me what you want to eat and I'll figure the rest out."),
+            messages.messageWithText("Try asking me for some tacos")]);
             return;
     }
 
     if (text.includes("taco") || text.includes("tacos")) {
         sendMessage(
             recipientId,
-            ["To make tacos, you need:", 
-            "Shredded cheese \nDiced tomatoes \nMinced red onion \nJalapenos \nSour cream \nGuacamole \nOlives \nShredded lettuce \nCilantro \nDiced avocado",
-            "Your total is $13.78. Should I go ahead and buy ingredients for your tacos?"]);
+            [messages.messageWithText("To make tacos, you need:"), 
+            messages.messageWithText("Shredded cheese \nDiced tomatoes \nMinced red onion \nJalapenos \nSour cream \nGuacamole \nOlives \nShredded lettuce \nCilantro \nDiced avocado"),
+            messages.messageWithText("Your total is $13.78. Should I go ahead and buy ingredients for your tacos?")]);
             return;
     }
 
     if (text.includes("yes")) {
         sendMessage(
             recipientId,
-            ["Great!", 
-            "Your ingredients will arrive at 1431 Ocean Ave, Santa Monica, CA in 30 minutes.",
-            "Once your ingredients arrive, I'll walk you through the cooking process. Just let me know!"]);
+            [messages.messageWithText("Great!"), 
+            messages.messageWithText("Your ingredients will arrive at 1431 Ocean Ave, Santa Monica, CA in 30 minutes."),
+            messages.messageWithText("Once your ingredients arrive, I'll walk you through the cooking process. Just let me know!")]);
     }
 };
 
