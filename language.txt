@@ -1,0 +1,6 @@
+=====Intents======
+1. generalInfo
+2. 
+
+=====Entities=====
+1. item
