@@ -1,12 +1,8 @@
-'use strict';
-
-const express = require('express');
-const bodyParser = require('body-parser');
-const receiveApi = require('./receive');
-const app = express().use(bodyParser.json());
+const app = module.exports = require('express')();
+const receiveApi = require('../actions/receive');
 
 // Messenger platform sends all webhook events to this post endpoint
-app.post('/webhook', (req, res) => {
+app.post('/post_event', (req, res) => {
     res.sendStatus(200);
 
     const body = req.body;
@@ -25,7 +21,7 @@ app.post('/webhook', (req, res) => {
 });
 
 // Messenger platform verifies webook via this get endpoint
-app.get('/webhook', (req, res) => {
+app.get('/verify', (req, res) => {
     let verifyToken = "nikhil";
 
     let mode = req.query['hub.mode'];
@@ -43,5 +39,3 @@ app.get('/webhook', (req, res) => {
         res.sendStatus(403); 
     }
 });
-
-app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
