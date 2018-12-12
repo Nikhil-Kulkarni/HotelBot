@@ -2,7 +2,7 @@ const app = module.exports = require('express')();
 const receiveApi = require('../actions/receive');
 
 // Messenger platform sends all webhook events to this post endpoint
-app.post('/post_event', (req, res) => {
+app.post('/', (req, res) => {
     res.sendStatus(200);
 
     const body = req.body;
@@ -21,7 +21,7 @@ app.post('/post_event', (req, res) => {
 });
 
 // Messenger platform verifies webook via this get endpoint
-app.get('/verify', (req, res) => {
+app.get('/', (req, res) => {
     let verifyToken = "nikhil";
 
     let mode = req.query['hub.mode'];
