@@ -13,7 +13,7 @@ const typeDefs = `
     }
 
     type Query {
-        reservations: [Reservation]!
+        reservations: [Reservation]
     }
 `;
 
