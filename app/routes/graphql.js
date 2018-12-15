@@ -4,9 +4,9 @@ const graphiqlExpress = require('graphql-server-express').graphiqlExpress;
 const schema = require('../schemas/reservations').schema;
 
 app.use('/graphiql', graphiqlExpress({
-    endpointURL: '/',
+    endpointURL: '/api',
 }));
 
-app.use('/api', graphqlExpress({ schema }));
+app.use('/', graphqlExpress({ schema }));
 
 module.exports = app;
