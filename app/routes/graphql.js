@@ -1,7 +1,7 @@
 const app = require('express')();
 const graphQLExpress = require('graphql-server-express').graphqlExpress;
 const graphIQLExpress = require('graphql-server-express').graphIQLExpress;
-const schema = require('../schemas/reservations');
+const schema = require('../schemas/reservations').schema;
 
 app.use('/graphiql', graphIQLExpress({
     endpointUrl: '/',

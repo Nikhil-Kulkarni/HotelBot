@@ -3,7 +3,7 @@ const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
 const resolvers = require('../resolvers/reservations');
 
 const typeDefs = `
-    type Reservations {
+    type Reservation {
         id: String!
         hotel_id: String
         phone_number: String
@@ -13,7 +13,7 @@ const typeDefs = `
     }
 
     type Query {
-        reservations: [Reservations]!
+        reservations: [Reservation]!
     }
 `;
 
