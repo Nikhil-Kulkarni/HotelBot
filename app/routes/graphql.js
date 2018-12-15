@@ -7,6 +7,6 @@ app.use('/graphiql', graphiqlExpress({
     endpointURL: '/',
 }));
 
-app.use('/', graphqlExpress({ schema }));
+app.use('/api', graphqlExpress({ schema }));
 
 module.exports = app;
