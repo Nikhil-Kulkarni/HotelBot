@@ -1,24 +1,9 @@
-const { Client } = require('pg');
+const pgPromise = require('pg-promise');
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-  });
-  
-const queryDb = (query, params) => {
-    try {
-        client.query(query, params, (error, response) => {
-            if (error) throw error;
-            return response.rows;
-        });
-    } catch (e) {
-        console.log(e);
-        return [];
-    }
-};
+const connection = process.env.DATABASE_URL;
+const pgp = pgPromise({});
+const psql = pgp(connection);
 
 module.exports = {
-    queryDb,
+    db: psql
 };
-
-await client.connect();
