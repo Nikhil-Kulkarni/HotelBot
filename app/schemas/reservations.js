@@ -1,6 +1,6 @@
 const GraphQLSchema = require('graphql').GraphQLSchema;
 const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
-const resolvers = require('../resolvers/reservations');
+const resolver = require('../resolvers/reservations').resolver;
 
 const typeDefs = `
     type Reservation {
@@ -20,6 +20,6 @@ const typeDefs = `
 module.exports =  {
     schema: makeExecutableSchema({
         typeDefs, 
-        resolvers
+        resolver
     })
 };
