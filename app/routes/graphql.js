@@ -1,12 +1,12 @@
 const app = require('express')();
-const graphQLExpress = require('graphql-server-express').graphqlExpress;
-const graphIQLExpress = require('graphql-server-express').graphIQLExpress;
+const graphqlExpress = require('graphql-server-express').graphqlExpress;
+const graphiqlExpress = require('graphql-server-express').graphiqlExpress;
 const schema = require('../schemas/reservations').schema;
 
-app.use('/graphiql', graphIQLExpress({
+app.use('/graphiql', graphiqlExpress({
     endpointUrl: '/',
 }));
 
-app.use('/', graphQLExpress({ schema }));
+app.use('/', graphqlExpress({ schema }));
 
 module.exports = app;
