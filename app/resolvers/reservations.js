@@ -10,5 +10,5 @@ const reservationsResolver = {
 };
 
 module.exports = {
-    resolver: reservationsResolver
+    resolvers: reservationsResolver
 };

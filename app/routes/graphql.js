@@ -7,11 +7,6 @@ const db = require('../actions/dbclient').db;
 app.use('/graphiql', graphiqlExpress({
     endpointURL: '/api',
 }));
-
-app.get('/testdb', (req, res) => {
-    const rows = db.manyOrNone('select * from reservations');
-    res.status(200).send(rows);
-});
 app.use('/', graphqlExpress({ schema }));
 
 module.exports = app;
