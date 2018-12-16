@@ -1,0 +1,21 @@
+type Reservation {
+    id: String!
+    hotel_id: String!
+    phone_number: String!
+    name: String!
+    room_number: Int
+    checked_in: Boolean
+}
+
+type Session {
+    id: Int!
+    phone_number: String!
+    fb_id: String
+    active: Boolean
+}
+
+type Query {
+    reservations: [Reservation]
+    reservation(phone_number: String): Reservation
+    session(phone_number: String): Session
+}
