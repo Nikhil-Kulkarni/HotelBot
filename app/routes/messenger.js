@@ -11,7 +11,6 @@ app.post('/', (req, res) => {
             entry.messaging.forEach(messagingEvent => {
                 if (messagingEvent.message) {
                     receiveApi.handleReceivedMessage(messagingEvent);
-                    console.log(messagingEvent.message.nlp.entities);
                 }
             });
         });

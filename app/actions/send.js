@@ -48,42 +48,61 @@ const sendMessage = (recipientId, messagePayloads) => {
         ...messagePayloadArray]);
 };
 
-const sendMessageFromText = (recipientId, message) => {
-    const text = message.text.toLowerCase();
-    if (text.includes("hi") || text.includes("hey") || text.includes("yo") || text.includes("What's up")) {
-        sendMessage(
-            recipientId,
-            [messages.messageWithText("Hi, I'm Chef Nikhil. I look up recipes for food you want, gather the ingredients, and deliver them right to your doorstep. Tell me what you want to eat and I'll figure the rest out."),
-            messages.messageWithText("Try asking me for some tacos")]);
-            return;
-    }
-
-    if (text.includes("taco") || text.includes("tacos")) {
-        sendMessage(
-            recipientId,
-            [messages.messageWithText("To make tacos, you need:"), 
-            messages.messageWithText("Shredded cheese \nDiced tomatoes \nMinced red onion \nJalapenos \nSour cream \nGuacamole \nOlives \nShredded lettuce \nCilantro \nDiced avocado"),
-            messages.messageWithText("Your total is $13.78. Should I go ahead and buy ingredients for your tacos?")]);
-            return;
-    }
-
-    if (text.includes("yes")) {
-        sendMessage(
-            recipientId,
-            [messages.messageWithText("Great!"), 
-            messages.messageWithText("Your ingredients will arrive at 1431 Ocean Ave, Santa Monica, CA in 30 minutes."),
-            messages.messageWithText("Once your ingredients arrive, I'll walk you through the cooking process. Just let me know!")]);
-    }
-};
-
 const sendDummyMessage = (recipientId) => {
     sendMessage(
         recipientId,
         [messages.dummyMessage]);
 };
 
+const sendGetPhoneNumberMessage = (recipientId) => {
+    sendMessage(
+        recipientId,
+        [messages.sendPhoneNumberMessage]);
+};
+
+const sendPhoneNumberConfirmationMessage = (recipientId) => {
+    sendMessage(
+        recipientId,
+        [messages.messageWithText('Thanks! Let me look up your reservation.')]);
+};
+
+const sendNoReservationMessage = (recipientId) => {
+    sendMessage(
+        recipientId,
+        [messages.messageWithText('I\'m sorry. I don\'t see a reservation for you. Let me connect you to an agent.')]);
+};
+
+const sendBasicReservationInformation = (recipientId, personName, hotelName, startDate, endDate) => {
+    sendMessage(
+        recipientId,
+        [messages.messageWithText(`Ok ${personName}, You're scheduled to stay at ${hotelName} from ${startDate} to ${endDate}`),
+            messages.messageWithText('Feel free to ask me anything about your stay!')]);
+};
+
+const sendConnectToAgentMessage = (recipientId) => {
+    sendMessage(
+        recipientId,
+        [messages.messageWithText('One moment. Let me connect you to an agent.')]);
+};
+
+const sendActionConfirmationMessage = (recipientId, item, amount)  => {
+    var message = `Sure thing. We'll send you your ${item} shortly`;
+    if (amount != -1) {
+        message = `Sure thing. We'll send you your ${amount} ${item} shortly`
+    }
+
+    sendMessage(
+        recipientId, 
+        messages.messageWithText(message));
+}
+
 module.exports = {
     sendMessage,
     sendDummyMessage,
-    sendMessageFromText
+    sendGetPhoneNumberMessage,
+    sendPhoneNumberConfirmationMessage,
+    sendNoReservationMessage,
+    sendBasicReservationInformation,
+    sendConnectToAgentMessage,
+    sendActionConfirmationMessage
 };
