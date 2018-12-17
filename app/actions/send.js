@@ -96,6 +96,12 @@ const sendActionConfirmationMessage = (recipientId, item, amount)  => {
         messages.messageWithText(message));
 }
 
+const sendGeneralInfoMessageWithText = (recipientId, text) => {
+    sendMessage(
+        recipientId,
+        [messages.messageWithText(text)]);
+}
+
 module.exports = {
     sendMessage,
     sendDummyMessage,
@@ -104,5 +110,6 @@ module.exports = {
     sendNoReservationMessage,
     sendBasicReservationInformation,
     sendConnectToAgentMessage,
-    sendActionConfirmationMessage
+    sendActionConfirmationMessage,
+    sendGeneralInfoMessageWithText
 };

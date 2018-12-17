@@ -3,7 +3,6 @@ const sendApi = require('../actions/send');
 const { insertAction, fetchReservationFromPhoneNumber } = require('../db/dbclient');
 
 const process = (senderId, entities, phoneNumber) => {
-    // TODO: Handle no item case
     if (!entities.item) {
         sendApi.sendConnectToAgentMessage(senderId);
         return;

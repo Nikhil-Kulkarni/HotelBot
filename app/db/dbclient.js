@@ -28,7 +28,7 @@ const fetchSessionFromFbId = (fbId) => {
         text: query,
         values: [fbId]
     });
-}
+};
 
 const fetchHotelInfoFromReservationId = (reservationId) => {
     const query = 'select reservations.start_date, reservations.end_date, reservations.name, hotel.name as hotel_name from reservations, hotel where reservations.id = $1 and reservations.hotel_id = hotel.id';
@@ -36,26 +36,71 @@ const fetchHotelInfoFromReservationId = (reservationId) => {
         text: query,
         values: [reservationId]
     });
-}
+};
+
+const fetchWifiPasswordFromHotelHotelId = (hotelId) => {
+    const query = 'select wifi_password from hotel where id = $1'
+    return psql.one({
+        text: query,
+        values: [hotelId]
+    });
+};
+
+const fetchGymHoursFromHotelId = (hotelId) => {
+    const query = 'select gym_hours from hotel where id = $1'
+    return psql.one({
+        text: query,
+        values: [hotelId]
+    });
+};
+
+const fetchPoolHoursFromHotelId = (hotelId) => {
+    const query = 'select pool_hours from hotel where id = $1'
+    return psql.one({
+        text: query,
+        values: [hotelId]
+    });
+};
+
+const fetchBreakfastHoursFromHotelId = (hotelId) => {
+    const query = 'select breakfast_time from hotel where id = $1'
+    return psql.one({
+        text: query,
+        values: [hotelId]
+    });
+};
+
+const fetchCheckoutTimeFromHotelId = (hotelId) => {
+    const query = 'select check_out_time from hotel where id = $1'
+    return psql.one({
+        text: query,
+        values: [hotelId]
+    });
+};
 
 const insertAction = (reservationId, item, amount) => {
     const query = 'insert into actions values($1, $2, $3, $4, $5)';
     const uuid = uuidv4();
     return psql.none(query, [uuid, reservationId, item, amount, false]);
-}
+};
 
 const createSession = (phoneNumber, fbId) => {
     const query = 'insert into sessions values($1, $2, $3, $4)';
     var id = new Date().getTime();
     id = id & 0xffffffff;
     return psql.none(query, [id, phoneNumber, fbId, true]);
-}
+};
 
 module.exports = {
     fetchReservationFromPhoneNumber,
     fetchSessionFromPhoneNumber,
     fetchSessionFromFbId,
     fetchHotelInfoFromReservationId,
+    fetchCheckoutTimeFromHotelId,
+    fetchBreakfastHoursFromHotelId,
+    fetchPoolHoursFromHotelId,
+    fetchGymHoursFromHotelId,
+    fetchWifiPasswordFromHotelHotelId,
     insertAction,
     createSession
 };

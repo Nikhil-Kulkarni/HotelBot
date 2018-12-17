@@ -50,7 +50,7 @@ const createNewSession = (senderId, phoneNumber) => {
             fetchReservationFromPhoneNumber(phoneNumber)
                 .then((data) => {
                     const reservationId = data.id;
-                    if (!reservatisonId) {
+                    if (!reservationId) {
                         sendApi.sendNoReservationMessage(senderId);
                     } else {
                         getAndSendHotelInfo(senderId, reservationId);
