@@ -91,6 +91,29 @@ const createSession = (phoneNumber, fbId) => {
     return psql.none(query, [id, phoneNumber, fbId, true]);
 };
 
+const registerUser = (username, password) => {
+    const query = 'insert into users values($1, $2, $3)';
+    var id = new Date().getTime();
+    id = id & 0xffffffff;
+    return psql.none(query, [id, username, password]);
+}
+
+const fetchUser = (username, password) => {
+    const query = 'select * from users where username= $1 and password = $2';
+    return psql.any({
+        text: query, 
+        values: [username, password]
+    });
+}
+
+const fetchUserById = (id) => {
+    const query = 'select * from users where id = $1';
+    return psql.one({
+        text: query,
+        values: [id]
+    });
+}
+
 module.exports = {
     fetchReservationFromPhoneNumber,
     fetchSessionFromPhoneNumber,
@@ -102,5 +125,8 @@ module.exports = {
     fetchGymHoursFromHotelId,
     fetchWifiPasswordFromHotelHotelId,
     insertAction,
-    createSession
+    createSession,
+    registerUser,
+    fetchUser,
+    fetchUserById
 };

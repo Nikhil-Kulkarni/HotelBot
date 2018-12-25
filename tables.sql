@@ -43,3 +43,10 @@ CREATE TABLE ACTIONS(
     AMOUNT          INT,
     COMPLETE        BOOLEAN     NOT NULL        DEFAULT FALSE
 );
+
+/* Keeps track of hotels that use concierge frontend service */
+CREATE TABLE USERS(
+    ID              TEXT        PRIMARY KEY     NOT NULL,
+    USERNAME        TEXT        NOT NULL        UNIQUE,
+    PASSWORD        TEXT        NOT NULL
+);
