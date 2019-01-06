@@ -122,6 +122,16 @@ const fetchHotelById = (id) => {
     });
 }
 
+const fetchActionForHotelId = (hotelId) => {
+    const query = `select actions.id, actions. reservation_id, actions.item, actions.amount, actions.complete, reservations.room_number, 
+        reservations.name, reservations.phone_number from hotel, reservations, actions where hotel.id = reservations.hotel_id 
+        and reservations.id = actions.reservation_id and reservations.hotel_id= $1`;
+    return psql.any({
+        text: query,
+        values: [hotelId]
+    });
+}
+
 module.exports = {
     fetchReservationFromPhoneNumber,
     fetchSessionFromPhoneNumber,
@@ -137,5 +147,6 @@ module.exports = {
     registerUser,
     fetchUser,
     fetchUserById,
-    fetchHotelById
+    fetchHotelById,
+    fetchActionForHotelId
 };
