@@ -114,6 +114,14 @@ const fetchUserById = (id) => {
     });
 }
 
+const fetchHotelById = (id) => {
+    const query = 'select * from hotel where id = $1';
+    return psql.any({
+        text: query,
+        values: [id]
+    });
+}
+
 module.exports = {
     fetchReservationFromPhoneNumber,
     fetchSessionFromPhoneNumber,
@@ -128,5 +136,6 @@ module.exports = {
     createSession,
     registerUser,
     fetchUser,
-    fetchUserById
+    fetchUserById,
+    fetchHotelById
 };

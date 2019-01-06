@@ -37,8 +37,8 @@ CREATE TABLE HOTEL(
 /* Actions keeps track of guest requests */
 /* Mark as complete after request has been completed and save for analytics */
 CREATE TABLE ACTIONS(
-    ID              TEXT         PRIMARY KEY     NOT NULL,
-    RESERVATION_ID  INT        NOT NULL        REFERENCES RESERVATIONS(ID),
+    ID              TEXT        PRIMARY KEY     NOT NULL,
+    RESERVATION_ID  INT         NOT NULL        REFERENCES RESERVATIONS(ID),
     ITEM            TEXT        NOT NULL,
     AMOUNT          INT,
     COMPLETE        BOOLEAN     NOT NULL        DEFAULT FALSE
